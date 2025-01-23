@@ -57,5 +57,24 @@ def main():
         num_digits = get_user_input(f"Enter the number of digits (0 to {total_length}): ", 0, total_length)
         num_specials = get_user_input(f"Enter the number of special characters (0 to {total_length}): ", 0, total_length)
 
+    # Generate password
+    password = generate_password(total_length, num_letters, num_digits, num_specials)
+    if password == "":
+        return
+
+    # Displaying password
+    print(f"\nYour desired password is: {password}")
+    print(f"\nPassword successfully generated with:")
+    print(f"- Letters: {num_letters}")
+    print(f"- Digits: {num_digits}")
+    print(f"- Special characters: {num_specials}")
+
+    # Saving password to file
+    with open("generated_password.txt", "w") as file:
+        file.write(f"Generated Password: {password}\n")
+    print("\nPassword has been saved to 'generated_password.txt'.")
+
+if __name__ == "__main__":
+    main()
 
 
