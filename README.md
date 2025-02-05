@@ -1,8 +1,8 @@
-# INFT1207 Lab1_Group10
-# Lab 1: Secure Password Generator
+# INFT1207
 ## Course Information
 - **Course Code**: INFT 1207
 - **Instructor**: Md Al Maruf
+# Lab 1: Secure Password Generator
 ## Objective
 The goal of this lab is to create a Python program that generates secure passwords based on user-defined criteria such as:
 - Total length
@@ -30,3 +30,22 @@ The goal of this lab is to create a Python program that generates secure passwor
 - Include comments explaining key sections of the code.
 ### Notes
 Ensure that the code is thoroughly tested and all functionalities work as expected.
+
+# Lab 2: Test Case Design 
+## Overview
+This project is a Python application that allows users to manage a reading list. Users can add books, retrieve the stored books, search for specific books, and navigate through these options using a text-based menu. The program stores book details in a CSV file.
+## Features
+- Add books to the reading list (title, author, year).
+- Store book details in `books.csv`.
+- Retrieve and display all books.
+- Search for a specific book by title.
+- User-friendly text menu to navigate the functionalities.
+
+### Notes
+- The program should follow the course style guide.
+- Descriptive variable and function names should be used.
+- Exploring additional features beyond the requirements is encouraged.
+
+
+
+
