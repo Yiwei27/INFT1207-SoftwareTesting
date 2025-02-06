@@ -1,18 +1,22 @@
+# Author : Shibin Shaji, Yiwei Li
+# Date : 06, Feb 2025
+# Description : a program that can store and retrieve information related to a user's reading list.
+
 import csv
 
 
 # Function to add a book to the reading list with input validation
-def add_book():
+def add_book(title, author, year):
     try:
-        title = input("Enter book title: ").strip()
+        title = title.strip()
         if title == "":
             raise ValueError("Title cannot be empty.")
 
-        author = input("Enter author name: ").strip()
+        author = author.strip()
         if author == "":
             raise ValueError("Author name cannot be empty.")
 
-        year = input("Enter year of publication: ").strip()
+        year = year.strip()
         if year.isdigit() is False or int(year) < 0:
             raise ValueError("Year must be a positive integer.")
 
@@ -30,19 +34,19 @@ def list_books():
         with open('books.csv', mode='r') as file:
             reader = csv.reader(file)
             books = list(reader)
-            if books == []:
+            if not books:
                 print("No books found.")
                 return
             for row in books:
                 print(f'Title: {row[0]}, Author: {row[1]}, Year: {row[2]}')
     except FileNotFoundError:
-        print("No books found. Please add books first.")
+        print("No books found. The file does not exist.")
 
 
 # Function to search for a book by title
-def search_book():
+def search_book(title):
     try:
-        title = input("Enter book title to search: ").strip()
+        title = title.strip()
         if title == "":
             raise ValueError("Title cannot be empty.")
 
@@ -60,9 +64,9 @@ def search_book():
 
 
 # Function to delete a book by title
-def delete_book():
+def delete_book(title):
     try:
-        title = input("Enter book title to delete: ").strip()
+        title = title.strip()
         if title == "":
             raise ValueError("Title cannot be empty.")
 
@@ -96,13 +100,18 @@ def menu():
         choice = input("Select an option: ").strip()
 
         if choice == '1':
-            add_book()
+            title = input("Enter book title: ")
+            author = input("Enter author name: ")
+            year = input("Enter year of publication: ")
+            add_book(title, author, year)
         elif choice == '2':
             list_books()
         elif choice == '3':
-            search_book()
+            title = input("Enter book title to search: ")
+            search_book(title)
         elif choice == '4':
-            delete_book()
+            title = input("Enter book title to delete: ")
+            delete_book(title)
         elif choice == '5':
             print("Exiting program.")
             break
