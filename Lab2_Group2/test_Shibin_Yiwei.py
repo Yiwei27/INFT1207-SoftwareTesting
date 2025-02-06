@@ -14,6 +14,15 @@ class TestReadingList(unittest.TestCase):
 
         self.assertIn(["Test Book", "Author Name", "2022"], rows)
 
+    def test_add_book_multiple_entries(self):
+        add_book("Book1", "Author1", "2020")
+        add_book("Book2", "Author2", "2021")
+        with open('books.csv', 'r') as file:
+            reader = csv.reader(file)
+            books = list(reader)
+        self.assertIn(["Book1", "Author1", "2020"], books)
+        self.assertIn(["Book2", "Author2", "2021"], books)
+
     def test_list_books_with_data(self):
         with open('books.csv', 'w', newline='') as file:
             writer = csv.writer(file)
@@ -23,6 +32,9 @@ class TestReadingList(unittest.TestCase):
 
     def test_list_books_empty_file(self):
         open('books.csv', 'w').close()  # Create an empty file
+        self.assertEqual(list_books(), None)
+
+    def test_list_books_no_file(self):
         self.assertEqual(list_books(), None)
 
 
