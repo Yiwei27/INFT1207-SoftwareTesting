@@ -44,6 +44,7 @@ def list_books():
 
 
 # Function to search for a book by title
+
 def search_book(title):
     try:
         title = title.strip()
@@ -54,13 +55,12 @@ def search_book(title):
             reader = csv.reader(file)
             for row in reader:
                 if row[0].lower() == title.lower():
-                    print(f'Found: Title: {row[0]}, Author: {row[1]}, Year: {row[2]}')
-                    return
-        print("Book not found.")
+                    return f"Found: Title: {row[0]}, Author: {row[1]}, Year: {row[2]}"
+        return "Book not found."
     except FileNotFoundError:
-        print("No books found. Please add books first.")
+        return "No books found. Please add books first."
     except ValueError as e:
-        print(f"Error: {e}")
+        return f"Error: {e}"
 
 
 # Function to delete a book by title
@@ -84,13 +84,15 @@ def delete_book(title):
             with open('books.csv', mode='w', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerows(books)
-            print("Book deleted successfully!")
+            return "Book deleted successfully!"
         else:
-            print("Book not found.")
+            return "Book not found."  # Return instead of print
+
     except FileNotFoundError:
-        print("No books found. Please add books first.")
+        return "No books found. Please add books first."
     except ValueError as e:
-        print(f"Error: {e}")
+        return f"Error: {e}"
+
 
 
 # Menu loop
