@@ -1,7 +1,7 @@
 import unittest
 
 # Import the TestShapes class
-from test.test_Lab3_Yiwei_Shibin import TestShapes
+from test_Lab3_Yiwei_Shibin import TestShapes
 
 def run_tests(choice):
     suite = unittest.TestSuite()
@@ -11,10 +11,13 @@ def run_tests(choice):
         suite.addTest(TestShapes('test_circle_area_invalid'))
     elif choice == 't':
         suite.addTest(TestShapes('test_trapezium_area_valid'))
+        suite.addTest(TestShapes('test_trapezium_area_invalid'))
     elif choice == 'e':
         suite.addTest(TestShapes('test_ellipse_area_valid'))
+        suite.addTest(TestShapes('test_ellipse_area_invalid'))
     elif choice == 'r':
         suite.addTest(TestShapes('test_rhombus_area_valid'))
+        suite.addTest(TestShapes('test_rhombus_area_invalid'))
     else:
         print("Invalid choice. Exiting.")
         return

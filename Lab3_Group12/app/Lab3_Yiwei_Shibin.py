@@ -6,15 +6,23 @@ from math import pi
 
 
 def circle_area(r):
+    if r < 0:
+        raise ValueError("Radius cannot be negative")
     return pi * (r ** 2)
 
 def trapezium_area(a, b, h):
+    if a < 0 or b < 0 or h < 0:
+        raise ValueError("Base and height must be non-negative")
     return 0.5 * (a + b) * h
 
 def ellipse_area(a, b):
+    if a < 0 or b < 0:
+        raise ValueError("Axes must be non-negative")
     return pi * a * b
 
 def rhombus_area(d1, d2):
+    if d1 < 0 or d2 < 0:
+        raise ValueError("Diagonals must be non-negative")
     return 0.5 * d1 * d2
 
 def get_positive_float(prompt):
