@@ -25,15 +25,6 @@ def rhombus_area(d1, d2):
         raise ValueError("Diagonals must be non-negative")
     return 0.5 * d1 * d2
 
-def get_positive_float(prompt):
-    try:
-        value = float(input(prompt).strip())
-        if value < 0:
-            raise ValueError("Value must be non-negative.")
-        return value
-    except ValueError:
-        print("Error: Invalid input. Please enter a positive number.")
-        return get_positive_float(prompt)
 
 def menu():
     while True:
@@ -45,28 +36,31 @@ def menu():
         print("Q - Quit")
 
         choice = input("Enter your choice: ").strip().upper()
+        try:
 
-        if choice == 'C':
-            r = get_positive_float("Enter the radius: ")
-            print(f"Circle Area: {circle_area(r):.2f}")
-        elif choice == 'T':
-            a = get_positive_float("Enter base1: ")
-            b = get_positive_float("Enter base2: ")
-            h = get_positive_float("Enter height: ")
-            print(f"Trapezium Area: {trapezium_area(a, b, h):.2f}")
-        elif choice == 'E':
-            a = get_positive_float("Enter semi-major axis: ")
-            b = get_positive_float("Enter semi-minor axis: ")
-            print(f"Ellipse Area: {ellipse_area(a, b):.2f}")
-        elif choice == 'R':
-            d1 = get_positive_float("Enter diagonal 1: ")
-            d2 = get_positive_float("Enter diagonal 2: ")
-            print(f"Rhombus Area: {rhombus_area(d1, d2):.2f}")
-        elif choice == 'Q':
-            print("Exiting program")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+            if choice == 'C':
+                r = float(input("Enter the radius: ").strip())
+                print(f"Circle Area: {circle_area(r):.2f}")
+            elif choice == 'T':
+                a = float(input("Enter base1: ").strip())
+                b = float(input("Enter base2: ").strip())
+                h = float(input("Enter height: ").strip())
+                print(f"Trapezium Area: {trapezium_area(a, b, h):.2f}")
+            elif choice == 'E':
+                a = float(input("Enter semi-major axis: ").strip())
+                b = float(input("Enter semi-minor axis: ").strip())
+                print(f"Ellipse Area: {ellipse_area(a, b):.2f}")
+            elif choice == 'R':
+                d1 = float(input("Enter diagonal 1: ").strip())
+                d2 = float(input("Enter diagonal 2: ").strip())
+                print(f"Rhombus Area: {rhombus_area(d1, d2):.2f}")
+            elif choice == 'Q':
+                print("Exiting program")
+                break
+            else:
+                print("Invalid choice. Please try again.")
+        except ValueError as e:
+            print(f"Error: {e}")
 
 
 if __name__ == "__main__":
